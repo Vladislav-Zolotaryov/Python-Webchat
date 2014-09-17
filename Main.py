@@ -80,7 +80,7 @@ def leaveChatChannel(channel_id):
 @app.route("/chat_channel/<int:channel_id>/status", methods=["GET", "POST"])
 @login_required
 def chatChannelStatus(channel_id):
-    messages = session.query(ChatChannelMessage, User).join(User).order_by(ChatChannelMessage.timestamp.desc()).limit(10).all()
+    messages = session.query(ChatChannelMessage, User).filter_by(channel_id=channel_id).join(User).order_by(ChatChannelMessage.timestamp.desc()).limit(10).all()
     messagesJson = []
     for message, user in messages:
         messagesJson.append('{"message": "'+message.message+'", "username": "'+user.name+'", "timestamp": "'+ message.timestamp.strftime('%H:%m:%S') +'"}')

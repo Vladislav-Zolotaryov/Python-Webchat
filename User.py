@@ -11,6 +11,7 @@ class User(DbManager.declarativeBase):
     id = Column('user_id', Integer, primary_key=True)
     name = Column('username', String, unique=True)
     password = Column('password', String, nullable=False)
+    salt = Column('salt', String, nullable=False)
     currentChatChannelId = Column('current_chat_channel_id', Integer, ForeignKey('chat_channels.channel_id', use_alter=True, name='fk_node_chat_channel_id'))
     
     def __init__(self, name, password):
