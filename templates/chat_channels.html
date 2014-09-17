@@ -1,0 +1,23 @@
+{% extends "main-layout.html" %}
+{% block content %}
+    <div class="centered-block">
+  <form action="{{url_for('chatChannelsSearch')}}" type="get" class="form-inputs">
+    <label for="chat_channel_name">Chat name</label>
+    <input name="chat_channel_name" type="type"/>
+    <input type="submit" class="buttons" value="Search"/>
+    <input type="button" value="Create new channel"  class="buttons" onclick="location.href='{{ url_for('createChatChannel') }}'">
+    <input type="button" value="Logout"  class="buttons" onclick="location.href='{{ url_for('logout') }}'">
+  </form>
+  
+  <p>Chat Channels</p>
+  {% if channels %}
+    <ul class="chat-channels">
+      {% for channel in channels %}
+        <li>
+          <a href = "{{url_for('chatChannel', channel_id=channel.id)}}">{{ channel }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+    </div>
+{% endblock %}

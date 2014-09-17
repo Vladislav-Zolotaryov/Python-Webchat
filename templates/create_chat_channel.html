@@ -1,0 +1,12 @@
+{% extends "main-layout.html" %}
+{% block content %}
+  <div class="centered-block">
+	<form action="create_chat_channel" method="post" class="form-inputs">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name(size=20) }}
+        {{ form.description.label }} {{ form.description(size=60) }}
+		<input type="submit" class="buttons" value="Create">
+        <input type="button" class="buttons" onclick="location.href='{{ url_for('chatChannels') }}'" value="Cancel">
+	</form>	
+  </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+<script src="{{url_for('static', filename='js/jquery-1.11.1.min.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/main.css')}}">
+<script src="{{url_for('static', filename='js/chat_channel.js')}}"></script>
+{% extends "main-layout.html" %}
+
+{% block content %}
+    <div class="chat-channel-block">
+        <p class="ps">Users</p>
+        <div class="chat-channel-users-block"></div>
+        <p class="ps">Chat</p>
+        <div class="chat-channel-messages-block"></div>
+        
+        <input id="messageBox" type="text"/>
+        <input type="button" class="buttons" value="Send" onclick="sendMessage()"/>
+        <input type="submit" class="buttons" onclick="location.href='{{url_for('leaveChatChannel', channel_id=channel_id)}}'" value="Leave channel">
+    </div>
+{% endblock %}
